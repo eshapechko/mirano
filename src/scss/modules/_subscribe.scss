@@ -1,0 +1,53 @@
+@use '../variables' as *;
+
+.subscribe {
+  padding: 70px 0;
+
+  &__title {
+    font-family: $second-family;
+    font-size: clamp(
+      32px,
+      calc(32px + (18 * ((100vw - 320px) / (1440 - 320)))),
+      50px
+    );
+    line-height: 1.2;
+    text-transform: uppercase;
+    text-align: center;
+    color: $green;
+    margin-bottom: 40px;
+  }
+
+  &__form {
+    margin: 0 auto;
+    position: relative;
+    max-width: 524px;
+    width: 100%;
+    height: 40px;
+  }
+
+  &__input {
+    width: 100%;
+    height: 100%;
+    border-radius: 32px;
+    padding: 8px 56px 8px 16px;
+    border: none;
+
+    &::placeholder {
+      color: rgba($dark, 0.3);
+    }
+  }
+
+  &__email-button {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $light-orange;
+    border-radius: 32px;
+  }
+}
