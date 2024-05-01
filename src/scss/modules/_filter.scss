@@ -1,10 +1,11 @@
 @use '../variables' as *;
 
 .filter {
-  padding-bottom: 60px;
-
   &__container {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
   }
 
   &__group {
@@ -12,51 +13,81 @@
     border: none;
     display: flex;
     gap: 12px;
+
+    &_choices {
+      gap: 64px;
+    }
   }
 
   &__radio {
     position: absolute;
     appearance: none;
-
-    &:checked + .filter__label {
-      background-color: $light-orange;
-      color: $white;
-    }
   }
 
   &__label {
+    border-radius: 300px;
+    cursor: pointer;
+    padding: 16px;
+    padding-left: 60px;
+    background-color: $white;
+    color: $dark;
+    background-repeat: no-repeat;
+    background-position: center left 16px;
+    background-size: 40px;
+    transition: background-color 0.3s ease-in-out;
+
+    &_flower {
+      background-image: url(/img/filter-flowers.png);
+    }
+
+    &_toys {
+      background-image: url(/img/filter-bear.png);
+    }
+
+    &_postcard {
+      background-image: url(/img/filter-congratulat.png);
+    }
+
+    &:hover {
+      background-color: $orange;
+    }
+  }
+
+  &__radio:focus-visible + &__label {
+    outline: 2px solid $orange;
+    outline-offset: 4px;
+  }
+
+  &__radio:checked + &__label {
+    background-color: $light-orange;
+    color: $white;
+  }
+
+  &__choices {
+  }
+
+  &__select {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 4px;
-    border-radius: 300px;
-    padding: 16px 16px 16px 16px;
-    background-color: $white;
-    cursor: pointer;
+    gap: 8px;
 
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 1.3;
-    color: $dark;
-
-    &::before {
+    &::after {
       content: '';
-      display: block;
-      width: 40px;
-      height: 40px;
+      width: 8px;
+      height: 8px;
+      background: url(/img/arrow.svg) no-repeat center/contain;
     }
+  }
 
-    &_flowers::before {
-      background: url(../../../public/img/filter-flowers.svg) no-repeat center;
-    }
+  &__input-price {
+  }
 
-    &_toys::before {
-      background: url(../../../public/img/filter-bear.svg) no-repeat center;
-    }
+  &__type-list {
+  }
 
-    &_postcards::before {
-      background: url(../../../public/img/filter-congratulat.svg) no-repeat
-        center;
-    }
+  &__type-item {
+  }
+
+  &__type-button {
   }
 }
