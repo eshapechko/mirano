@@ -4,6 +4,10 @@
 .goods {
   padding: 60px 0;
 
+  @include tablet {
+    padding: 40px 0;
+  }
+
   &__container {
     display: flex;
     justify-content: center;
@@ -11,8 +15,9 @@
     gap: 20px;
   }
 
-  @include tablet {
-    padding: 40px 0;
+  &__box {
+    max-width: 970px;
+    flex-grow: 1;
   }
 
   &__title {
@@ -34,8 +39,8 @@
   &__list {
     display: grid;
     grid-template-columns: repeat(auto-fit, 310px);
-    max-width: 970px;
     margin: 0 auto;
+
     justify-content: center;
     gap: 24px 20px;
 
