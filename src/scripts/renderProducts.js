@@ -9,6 +9,14 @@ export const renderProducts = async () => {
 
     goodsList.innerHTML = '';
 
+    if (!products.length) {
+      const messageItem = document.createElement('li');
+      messageItem.textContent = 'Товары не найдены';
+      messageItem.classList.add('goods__no-product');
+      goodsList.append(messageItem);
+      return;
+    }
+
     products.forEach((product) => {
       const productCard = ProductCard(product);
 
