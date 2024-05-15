@@ -1,15 +1,28 @@
-export const initCart = () => {
-  const cart = document.querySelector('.cart');
-  const headerCartButton = document.querySelector('.header__cart-button');
-  const cartClose = document.querySelector('.cart__close');
+import { cartStore } from './Store';
+import { renderCart } from './renderCart';
 
-  const toggleCart = () => {
-    cart.classList.toggle('cart_open');
+const cart = document.querySelector('.cart');
+const headerCartButton = document.querySelector('.header__cart-button');
+const cartClose = document.querySelector('.cart__close');
 
-    if (cart.classList.contains('cart_open') && window.innerWidth > 1360) {
-      cart.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+const toggleCart = () => {
+  cart.classList.toggle('cart_open');
+
+  if (cart.classList.contains('cart_open') && window.innerWidth > 1360) {
+    cart.scrollIntoView({ behavior: 'smooth' });
+  }
+};
+
+export const initCart = async () => {
+  await cartStore.init();
+
+  headerCartButton.textContent = cartStore.getCart().length;
+
+  renderCart();
+
+  cartStore.subscribe(() => {
+    headerCartButton.textContent = cartStore.getCart().length;
+  });
 
   headerCartButton.addEventListener('click', toggleCart);
 
