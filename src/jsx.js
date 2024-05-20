@@ -1,4 +1,6 @@
 export default function jsx(tag, atttributes = {}, ...children) {
+  atttributes = atttributes || {};
+
   if (typeof tag === 'function') {
     return tag(atttributes, ...children);
   }
@@ -7,7 +9,7 @@ export default function jsx(tag, atttributes = {}, ...children) {
 
   Object.entries(atttributes).forEach(([key, value]) => {
     if (key === 'class') {
-      element.classList.add(...value.split(' '));
+      element.classList.add(...value.trim().split(' '));
     } else if (key.startsWith('on') && key.toLowerCase() in window) {
       element.addEventListener(key.toLowerCase().substring(2), value);
     } else if (key === 'style' && typeof value === 'object') {

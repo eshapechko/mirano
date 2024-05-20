@@ -7,7 +7,6 @@ export const renderCart = () => {
 
   const updateList = () => {
     const cart = cartStore.getCart();
-    console.log('cart: ', cart);
 
     cartList.textContent = '';
 
